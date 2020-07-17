@@ -56,12 +56,11 @@ $(UBOOT_BIN): u-boot $(SCP_BIN) $(ATF_BIN)
 		ARCH=arm
 	cp -f u-boot/$@ .
 
-install: all
+install:
 	mkdir -p $(DESTDIR)$(PREFIX)/share/pine64-uboot
 	cp -f $(UBOOT_BIN) boot.txt $(DESTDIR)$(PREFIX)/share/pine64-uboot
 
 clean:
-	rm -f $(UBOOT_BIN)
 
 distclean: clean
 	rm -rf crust arm-trusted-firmware u-boot $(TCTGZ) $(TCDIR)
