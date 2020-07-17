@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+export PATH=$(CURDIR)/or1k-linux-musl-cross/bin:$(CURDIR)/aarch64-linux-musl-cross/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=-relro,-stackprotector
+export DEB_CFLAGS_MAINT_SET =
+export DEB_LDFLAGS_MAINT_SET =
+export TF_CFLAGS += -fno-pie
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(MAKE) toolchains all

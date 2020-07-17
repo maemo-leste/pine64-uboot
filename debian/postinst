@@ -1,0 +1,37 @@
+#!/bin/sh
+
+uboot_bin="/usr/share/pine64-uboot/u-boot-sunxi-with-spl.bin"
+uboot_txt="/usr/share/pine64-uboot/boot.txt"
+
+warn() {
+	cat <<EOF
+**********************************************************
+pine64-uboot warning: $*
+**********************************************************
+EOF
+}
+
+if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
+	boot_dev="$(mount | grep '/boot' | cut -d' ' -f1)"
+	case "$boot_dev" in
+	mmcblk0*)
+		# external microsd
+		dd if="$uboot_bin" of=/dev/mmcblk0 seek=8 bs=1024 || {
+			warn "Was unable to dd to /dev/mmcblk0"
+		}
+		mkimage -C none -A arm -T script -d "$uboot_txt" /boot/boot.scr || {
+			warn "Was unabke to mkimage to /dev/mmcblk0 (/boot/boot.scr)"
+		}
+		sync
+		;;
+	""|mmcblk2*|*)
+		# mmcblk2 is internal emmc (not implemented yet in Leste)
+		#
+		# not supported
+		warn "Boot device '$boot_dev' is not supported."
+		warn "Try dd-ing u-boot yourself with what is provided with this package."
+		;;
+	esac
+fi
+
+#DEBHELPER#

@@ -1,0 +1,13 @@
+Source: pine64-uboot
+Priority: optional
+Section: pinephone
+Maintainer: Ivan J. <parazyd@dyne.org>
+Standards-Version: 4.3.0
+Build-Depends:
+ debhelper (>= 10),
+Homepage: https://github.com/maemo-leste/pine64-uboot
+
+Package: pine64-uboot
+Architecture: all
+Depends: u-boot-tools
+Description: u-boot distribution for the Pinephone
