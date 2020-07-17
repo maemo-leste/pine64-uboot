@@ -5,6 +5,7 @@ Maintainer: Ivan J. <parazyd@dyne.org>
 Standards-Version: 4.3.0
 Build-Depends:
  debhelper (>= 10),
+ wget,
 Homepage: https://github.com/maemo-leste/pine64-uboot
 
 Package: pine64-uboot
