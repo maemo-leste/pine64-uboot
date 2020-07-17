@@ -12,13 +12,15 @@ EOF
 }
 
 if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
-	boot_dev="$(mount | grep '/boot' | cut -d' ' -f1)"
+	boot_dev="$(mount | grep '/boot ' | cut -d' ' -f1)"
 	case "$boot_dev" in
 	/dev/mmcblk0*)
 		# external microsd
+		echo "dd-ing u-boot to /dev/mmcblk0 ..."
 		dd if="$uboot_bin" of=/dev/mmcblk0 seek=8 bs=1024 || {
 			warn "Was unable to dd to /dev/mmcblk0"
 		}
+		echo "Compiling boot.txt"
 		mkimage -C none -A arm -T script -d "$uboot_txt" /boot/boot.scr || {
 			warn "Was unabke to mkimage to /dev/mmcblk0 (/boot/boot.scr)"
 		}
