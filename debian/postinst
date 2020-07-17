@@ -14,7 +14,7 @@ EOF
 if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
 	boot_dev="$(mount | grep '/boot' | cut -d' ' -f1)"
 	case "$boot_dev" in
-	mmcblk0*)
+	/dev/mmcblk0*)
 		# external microsd
 		dd if="$uboot_bin" of=/dev/mmcblk0 seek=8 bs=1024 || {
 			warn "Was unable to dd to /dev/mmcblk0"
@@ -24,7 +24,7 @@ if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
 		}
 		sync
 		;;
-	""|mmcblk2*|*)
+	""|/dev/mmcblk2*|*)
 		# mmcblk2 is internal emmc (not implemented yet in Leste)
 		#
 		# not supported
