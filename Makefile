@@ -1,5 +1,7 @@
 .POSIX:
 
+PREFIX = /usr
+
 CRUST_VER = master
 ATF_VER = master
 UBOOT_VER = crust
@@ -54,17 +56,14 @@ $(UBOOT_BIN): u-boot $(SCP_BIN) $(ATF_BIN)
 		ARCH=arm
 	cp -f u-boot/$@ .
 
+install: all
+	mkdir -p $(DESTDIR)$(PREFIX)/share/pine64-uboot
+	cp -f $(UBOOT_BIN) boot.txt $(DESTDIR)$(PREFIX)/share/pine64-uboot
+
 clean:
-	$(MAKE) -C crust clean
-	$(MAKE) -C arm-trusted-firmware clean
-	$(MAKE) -C u-boot clean
+	rm -f $(UBOOT_BIN)
 
 distclean: clean
-	$(MAKE) -C crust distclean
-	$(MAKE) -C arm-trusted-firmware distclean
-	$(MAKE) -C u-boot distclean
+	rm -rf crust arm-trusted-firmware u-boot $(TCTGZ) $(TCDIR)
 
-mrproper:
-	rm -rf crust arm-trusted-firmware u-boot $(TCTGZ) $(TCS)
-
-.PHONY: clean distclean mrproper toolchains
+.PHONY: clean distclean toolchains install
