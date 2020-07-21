@@ -22,7 +22,7 @@ if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
 		}
 		echo "Compiling boot.txt"
 		mkimage -C none -A arm -T script -d "$uboot_txt" /boot/boot.scr || {
-			warn "Was unabke to mkimage to /dev/mmcblk0 (/boot/boot.scr)"
+			warn "Was unable to mkimage to /dev/mmcblk0 (/boot/boot.scr)"
 		}
 		sync
 		;;
