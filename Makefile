@@ -2,9 +2,12 @@
 
 PREFIX = /usr
 
-CRUST_VER = master
-ATF_VER = master
-UBOOT_VER = crust
+#CRUST_VER = master
+CRUST_VER = e63106c70bc4ddfa3575e4f1f3667de0795252a8
+#ATF_VER = master
+ATF_VER = 428518c638da05f980280227ce43fa1655c70be1
+#UBOOT_VER = crust
+UBOOT_VER = 7206996ef7f89375dd74b275ced62d85f8bc7f42
 
 OR1K_TOOLCHAIN = or1k-linux-musl-
 AARCH64_TOOLCHAIN = aarch64-linux-musl-
@@ -44,7 +47,7 @@ $(ATF_BIN): arm-trusted-firmware
 		PLAT=sun50i_a64 DEBUG=1 bl31
 
 u-boot:
-	git clone https://github.com/crust-firmware/u-boot
+	git clone https://gitlab.com/pine64-org/u-boot
 	cd $@ && git checkout $(UBOOT_VER)
 
 $(UBOOT_BIN): u-boot $(SCP_BIN) $(ATF_BIN)
