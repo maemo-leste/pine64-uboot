@@ -1,3 +1,9 @@
+pine64-uboot (0.4) unstable; urgency=medium
+
+  * Update arm-trusted firmware and crust.
+
+ -- Ivan J. <parazyd@dyne.org>  Mon, 16 Nov 2020 20:27:29 +0100
+
 pine64-uboot (0.3) unstable; urgency=medium
 
   * Update u-boot to support the 3GB Pinephone
