@@ -9,3 +9,7 @@ export TF_CFLAGS += -fno-pie
 
 %:
 	dh $@
+
+override_dh_auto_build:
+	$(MAKE) toolchains
+	$(MAKE) all
