@@ -1,3 +1,11 @@
+pine64-uboot (0.7) unstable; urgency=medium
+
+  * Enable toolchains.
+  * Add necessary dependencies for building in chroot.
+  * Don't skip build anymore.
+
+ -- Ivan J. <parazyd@dyne.org>  Tue, 12 Jan 2021 17:39:48 +0100
+
 pine64-uboot (0.6) unstable; urgency=medium
 
   * Remove u-boot binary from repository.
