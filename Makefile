@@ -5,8 +5,8 @@ PREFIX = /usr
 CRUST_VER = master
 ATF_VER = master
 #ATF_VER = v2.4
-#UBOOT_VER = crust
-UBOOT_VER = crust-2021-03-10
+UBOOT_VER = crust
+#UBOOT_VER = crust-2021-03-10
 
 OR1K_TOOLCHAIN = or1k-linux-musl-
 AARCH64_TOOLCHAIN = aarch64-linux-musl-
