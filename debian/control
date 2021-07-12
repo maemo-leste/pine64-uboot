@@ -14,6 +14,7 @@ Build-Depends:
  python3-dev,
  python3-distutils,
  python3-setuptools,
+ libssl-dev,
  swig,
  device-tree-compiler,
 Homepage: https://github.com/maemo-leste/pine64-uboot
