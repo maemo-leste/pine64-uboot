@@ -1,3 +1,10 @@
+pine64-uboot (0.8) unstable; urgency=medium
+
+  * Use master arm-trusted-firmware and newer crust u-boot.
+  * Add GPL-3 license.
+
+ -- Ivan J. <parazyd@dyne.org>  Mon, 12 Jul 2021 10:36:57 +0200
+
 pine64-uboot (0.7) unstable; urgency=medium
 
   * Enable toolchains.
