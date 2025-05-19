@@ -3,9 +3,9 @@
 PREFIX = /usr
 
 CRUST_VER = master
-ATF_VER = master
+ATF_VER = v2.10
 #ATF_VER = v2.4
-UBOOT_VER = crust
+UBOOT_VER = v2025.04
 #UBOOT_VER = crust-2021-03-10
 
 OR1K_TOOLCHAIN = or1k-linux-musl-
@@ -46,7 +46,7 @@ $(ATF_BIN): arm-trusted-firmware
 		PLAT=sun50i_a64 DEBUG=1 bl31
 
 u-boot:
-	git clone https://gitlab.com/pine64-org/u-boot
+	git clone https://github.com/u-boot/u-boot
 	cd $@ && git checkout $(UBOOT_VER)
 
 $(UBOOT_BIN): u-boot $(SCP_BIN) $(ATF_BIN)
